@@ -22,4 +22,9 @@ user_regular.update!(
   password_confirmation: 'password'
 )
 
-
+example_match_scheduled = Match.where(author: user_regular).first_or_initialize
+example_match_scheduled.update!(
+  datetime: Date.now(),
+  status: :scheduled,
+  author: user_regular
+)

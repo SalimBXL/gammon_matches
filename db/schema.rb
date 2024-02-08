@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_03_203412) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_08_143323) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "matches", force: :cascade do |t|
+    t.datetime "datetime"
+    t.integer "status"
+    t.bigint "winner_id"
+    t.bigint "looser_id"
+    t.bigint "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_matches_on_author_id"
+    t.index ["looser_id"], name: "index_matches_on_looser_id"
+    t.index ["winner_id"], name: "index_matches_on_winner_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
@@ -42,5 +55,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_03_203412) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "matches", "users", column: "author_id"
+  add_foreign_key "matches", "users", column: "looser_id"
+  add_foreign_key "matches", "users", column: "winner_id"
   add_foreign_key "posts", "users", column: "author_id"
 end

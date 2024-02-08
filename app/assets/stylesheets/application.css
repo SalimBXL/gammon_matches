@@ -12,9 +12,47 @@
  *
  *= require_tree .
  *= require_self
- */
+*/
 
- * {
-    font-family: 'Montserrat', sans-serif;
-    /* font-family: 'Roboto', sans-serif; */
- }
+* {
+  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
+  color: azure;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("background.svg");
+  background-size: cover;
+}
+
+.header-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+@media screen and (max-width: 768px) {
+  .header-flex {
+    flex-wrap: wrap;
+
+    #header-title {
+      padding-left: 16px;
+      font-size: 30px;
+    }
+
+    #header-subtitle {
+      padding-left: 16px;
+      font-size: 12px;
+    }
+
+    #header-navbar {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
