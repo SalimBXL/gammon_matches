@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Matches</h1>
+
+<div id="matches">
+  <% @matches.each do |match| %>
+    <h3>
+      <%= match.title %>
+      <% if match.finished? %>
+        <div class="w3-tag w3-theme-l3 w3-round w3-small">Finished</div>
+      <% end %>
+      <% if match.scheduled? %>
+        <div class="w3-tag w3-theme-d3 w3-round w3-small">Scheduled</div>
+      <% end %>
+      <% if match.playing? %>
+        <div class="w3-tag w3-theme-d3 w3-round w3-small">Playing</div>
+      <% end %>
+    </h3>
+    <p>
+      <strong>Author:</strong> <%= match.author.email %>
+      <br />
+      <%= "Publication date : #{match.published_at}" %>
+    </p>
+    <p>
+      <%= link_to t("views.matches.index.link_to_show"), match %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to t("views.matches.index.link_to_new"), new_match_path %>

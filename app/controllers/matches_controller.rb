@@ -15,6 +15,8 @@ class MatchesController < ApplicationController
   def new
     @match = Match.new
     @match.author = current_user
+    @match.datetime = Time.current
+    @match.status = :scheduled
   end
 
   # GET /matches/1/edit

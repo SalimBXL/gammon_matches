@@ -7,7 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :trackable
 
   has_many :posts, dependent: :destroy_async
-  has_many :matches
+  has_many :matches, dependent: :destroy_async
 
   validates :email, presence: { uniqueness: true }
   validates :encrypted_password, presence: true
