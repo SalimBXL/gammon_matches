@@ -1,7 +1,8 @@
-<header class="w3-display-container w3-wide w3-padding" id="home">
-    <h1 id="header-title">Backgammon Matches Database</h1>
+<header class="w3-container w3-center w3-wide" id="home">
+    <h1 id="header-title">Backgammon</h1>
+    <h1 id="header-title2">Matches Database</h1>
     <p id="header-subtitle">Your Backgammon Database</p>
-    <div class=" w3-tag w3-margin w3-theme w3-display-topright">
-        <%= "Admin" if current_user&.admin? %>
-    </div>
 </header>
+<div class=" w3-tag w3-margin w3-theme w3-display-topright">
+    <%= "Admin" if current_user&.admin? %>
+</div>
